@@ -1,0 +1,109 @@
+{
+  "id": "page_root",
+  "type": "Page",
+  "props": {
+    "title": "用户管理",
+    "variables": {
+      "userList": [],
+      "loading": false,
+      "searchKey": "",
+      "selectedId": null,
+      "totalCount": 0
+    }
+  },
+  "children": [
+    {
+      "id": "header_section",
+      "type": "Container",
+      "props": {
+        "style": {
+          "display": "flex",
+          "justifyContent": "space-between",
+          "marginBottom": "16px"
+        }
+      },
+      "children": [
+        {
+          "id": "search_input",
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入用户名搜索",
+            "value": "{{state.searchKey}}",
+            "onChange": "{{(e) => setState({ searchKey: e.target.value })}}"
+          }
+        },
+        {
+          "id": "add_btn",
+          "type": "Button",
+          "props": {
+            "text": "新增用户",
+            "disabled": "{{state.loading}}",
+            "onClick": "{{() => openDialog('addUser')}}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stats_bar",
+      "type": "Text",
+      "props": {
+        "content": "{{`共 ${state.totalCount} 条记录，当前筛选: ${state.searchKey || '全部'}`}}",
+        "visible": "{{state.totalCount > 0}}"
+      }
+    },
+    {
+      "id": "user_table",
+      "type": "Table",
+      "props": {
+        "dataSource": "{{state.userList.filter(u => u.name.includes(state.searchKey))}}",
+        "loading": "{{state.loading}}",
+        "columns": [
+          { "title": "姓名", "dataIndex": "name" },
+          { "title": "邮箱", "dataIndex": "email" },
+          { "title": "状态", "dataIndex": "status" }
+        ],
+        "onRowClick": "{{(row) => setState({ selectedId: row.id })}}"
+      }
+    },
+    {
+      "id": "detail_panel",
+      "type": "Container",
+      "props": {
+        "visible": "{{state.selectedId !== null}}",
+        "style": {
+          "border": "1px solid #eee",
+          "padding": "16px",
+          "marginTop": "16px"
+        }
+      },
+      "children": [
+        {
+          "id": "detail_title",
+          "type": "Text",
+          "props": {
+            "content": "{{`用户详情 - ${state.userList.find(u => u.id === state.selectedId)?.name || ''}`}}",
+            "style": { "fontSize": "18px", "fontWeight": "bold" }
+          }
+        },
+        {
+          "id": "detail_email",
+          "type": "Text",
+          "props": {
+            "content": "{{state.userList.find(u => u.id === state.selectedId)?.email}}",
+            "visible": "{{state.selectedId !== null}}"
+          }
+        },
+        {
+          "id": "delete_btn",
+          "type": "Button",
+          "props": {
+            "text": "删除用户",
+            "danger": true,
+            "disabled": "{{state.loading || state.selectedId === null}}",
+            "onClick": "{{async () => { setState({ loading: true }); await deleteUser(state.selectedId); setState({ loading: false, selectedId: null }); }}}"
+          }
+        }
+      ]
+    }
+  ]
+}

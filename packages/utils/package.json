@@ -1,0 +1,9 @@
+{
+  "name": "@low-code/utils",
+  "version": "1.0.0",
+  "description": "Low-code platform utility functions",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "keywords": ["low-code", "utils"],
+  "license": "ISC"
+}

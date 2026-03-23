@@ -1,0 +1,7 @@
+{
+  "name": "@low-code/core",
+  "version": "1.0.0",
+  "description": "Low-code platform core functionality",
+  "main": "src/index.ts",
+  "types": "src/index.ts"
+}

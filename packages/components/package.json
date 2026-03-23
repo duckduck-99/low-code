@@ -1,0 +1,23 @@
+{
+  "name": "@low-code/components",
+  "version": "1.0.0",
+  "description": "Low-code platform built-in component library",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "keywords": [
+    "low-code",
+    "components"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@low-code/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  }
+}
