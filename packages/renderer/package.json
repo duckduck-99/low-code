@@ -1,5 +1,5 @@
 {
-  "name": "renderer",
+  "name": "@low-code/renderer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@low-code/components": "workspace:*",
+    "@low-code/core": "workspace:*",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },

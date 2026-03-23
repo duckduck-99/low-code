@@ -44,6 +44,12 @@ importers:
 
   packages/renderer:
     dependencies:
+      '@low-code/components':
+        specifier: workspace:*
+        version: link:../components
+      '@low-code/core':
+        specifier: workspace:*
+        version: link:../core
       react:
         specifier: ^19.2.4
         version: 19.2.4

@@ -1,0 +1,61 @@
+{
+  "id": "page",
+  "style": "display: flex; flex-direction: column; gap: 24px; padding: 24px;",
+  "state": {
+    "count": 0
+  },
+  "methods": [
+    {
+      "name": "increment",
+      "body": "function () { $setState('count', $v.count + 1) }"
+    },
+    {
+      "name": "sum",
+      "body": "function (a, b) { return a + b }"
+    }
+  ],
+  "children": [
+    {
+      "id": "header",
+      "type": "LcContainer",
+      "style": "display: flex; flex-direction: column; gap: 4px; align-items: center;",
+      "children": [
+        {
+          "id": "title",
+          "type": "LcText",
+          "props": {
+            "content": "低代码平台示例页面"
+          },
+          "style": "font-size: 24px; font-weight: bold; color: #1a1a1a;"
+        },
+        {
+          "id": "subtitle",
+          "type": "LcText",
+          "props": {
+            "content": "基于 Schema 驱动的组件渲染"
+          },
+          "style": "font-size: 14px; color: #999;"
+        }
+      ]
+    },
+    {
+      "id": "counter",
+      "type": "LcText",
+      "props": {
+        "content": "{{ $v.count }}"
+      },
+      "style": "font-size: 48px; font-weight: bold; color: #1a1a1a;"
+    },
+    {
+      "id": "button",
+      "type": "LcButton",
+      "props": {
+        "text": "Increment"
+      },
+      "style": "font-size: 14px; color: #999;",
+      "events": {
+        "onClick": "$m.increment()"
+      }
+    }
+  ]
+}
