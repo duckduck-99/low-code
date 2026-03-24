@@ -1,5 +1,6 @@
 {
-  "id": "page",
+  "id": "root",
+  "title": "低代码平台示例页面",
   "style": "display: flex; flex-direction: column; gap: 24px; padding: 24px;",
   "state": {
     "count": 0
@@ -18,6 +19,7 @@
     {
       "id": "header",
       "type": "LcContainer",
+      "props": {},
       "style": "display: flex; flex-direction: column; gap: 4px; align-items: center;",
       "children": [
         {
